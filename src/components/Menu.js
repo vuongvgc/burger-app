@@ -1,7 +1,10 @@
 import React, { Component } from "react";
-
+import FoodItem from "./FoodItem";
+import { connect } from "react-redux";
 class Menu extends Component {
   render() {
+    const { menu } = this.props;
+    let arrFood = Object.getOwnPropertyNames(menu);
     return (
       <div className="choose-food__box">
         <h3 className="text-center">Chọn Thức Ăn</h3>
@@ -10,35 +13,14 @@ class Menu extends Component {
             <thead>
               <tr>
                 <th>Thức Ăn</th>
-                <th colspan="2"></th>
+                <th colSpan="2"></th>
                 <th>Giá</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>Salad</td>
-                <td colspan="2">
-                  <button className="btn btn-success mx-2">+</button>
-                  <button className="btn btn-danger mx-2">-</button>
-                </td>
-                <td>10</td>
-              </tr>
-              <tr>
-                <td>Beef</td>
-                <td colspan="2">
-                  <button className="btn btn-success mx-2">+</button>
-                  <button className="btn btn-danger mx-2">-</button>
-                </td>
-                <td>10</td>
-              </tr>
-              <tr>
-                <td>Cheese</td>
-                <td colspan="2">
-                  <button className="btn btn-success mx-2">+</button>
-                  <button className="btn btn-danger mx-2">-</button>
-                </td>
-                <td>10</td>
-              </tr>
+              {arrFood.map((item) => {
+                return <FoodItem key={item} name={item} price={menu[item]} />;
+              })}
               <tr>
                 <th colSpan="3" className=" text-end">
                   Tổng Tiền
@@ -55,5 +37,7 @@ class Menu extends Component {
     );
   }
 }
-
-export default Menu;
+const mapStateToProps = (state) => {
+  return { menu: state.BurgerReducer.menu };
+};
+export default connect(mapStateToProps)(Menu);
