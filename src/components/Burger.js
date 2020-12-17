@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-const BurgerItem = (props) => {
-  return <div className={props.name}></div>;
-};
+import { renderBurgerList } from "../selectors/selectBurger";
 class Burger extends Component {
   constructor(props) {
     super(props);
@@ -12,23 +10,12 @@ class Burger extends Component {
       beef: 0,
     };
   }
-  renderBurger = (name, index) => {
-    return <BurgerItem key={name + index} name={name} />;
-  };
-  renderBurgerList = (name, number) => {
-    let arrBurger = [];
-    for (let i = 0; i < number; i++) {
-      arrBurger.push(this.renderBurger(name, i));
-    }
-    console.log(arrBurger);
-    return arrBurger;
-  };
   render() {
-    console.log(this.props.burger);
+    // console.log(this.props.burger);
     const arrBurger = Object.getOwnPropertyNames(this.props.burger);
-    console.log(arrBurger);
+    // console.log(arrBurger);
     let burgerList = arrBurger.map((item) => {
-      return this.renderBurgerList(item, this.props.burger[item]);
+      return renderBurgerList(item, this.props.burger[item]);
     });
     return (
       <div className="burger__box">
