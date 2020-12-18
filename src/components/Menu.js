@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import Modal from "./Modal";
 class Menu extends Component {
   render() {
-    const { menu } = this.props;
+    const { menu, total } = this.props;
     let arrFood = Object.getOwnPropertyNames(menu);
     return (
       <div className="choose-food__box">
@@ -26,7 +26,7 @@ class Menu extends Component {
                 <th colSpan="3" className=" text-end">
                   Tổng Tiền
                 </th>
-                <th>30</th>
+                <th>{total}</th>
               </tr>
             </tbody>
           </table>
@@ -46,6 +46,6 @@ class Menu extends Component {
   }
 }
 const mapStateToProps = (state) => {
-  return { menu: state.BurgerReducer.menu };
+  return { menu: state.BurgerReducer.menu, total: state.BurgerReducer.total };
 };
 export default connect(mapStateToProps)(Menu);

@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import Burger from "./Burger";
 import Bill from "./Bill";
+import { connect } from "react-redux";
+import { resetBurger } from "../actions";
 class Modal extends Component {
   render() {
     return (
@@ -40,7 +42,12 @@ class Modal extends Component {
               >
                 Chọn Lại
               </button>
-              <button type="button" className="btn btn-primary">
+              <button
+                type="button"
+                className="btn btn-primary"
+                onClick={() => this.props.resetBurger()}
+                data-bs-dismiss="modal"
+              >
                 Thanh Toán
               </button>
             </div>
@@ -51,4 +58,4 @@ class Modal extends Component {
   }
 }
 
-export default Modal;
+export default connect(null, { resetBurger })(Modal);
