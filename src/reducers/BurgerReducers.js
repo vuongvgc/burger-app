@@ -1,6 +1,6 @@
 import { ADD, REMOVE } from "../constans/burger";
 const initialState = {
-  burger: { salad: 3, cheese: 2, beef: 1 }, // [{name:'salad',amount:1},{name:'cheese',amount:1},{name:'beef',amount:1}]
+  burger: { salad: 1, cheese: 1, beef: 1 }, // [{name:'salad',amount:1},{name:'cheese',amount:1},{name:'beef',amount:1}]
 
   menu: {
     salad: 10,

@@ -3,7 +3,7 @@ export const renderBurgerList = (name, number) => {
   for (let i = 0; i < number; i++) {
     arrBurger.push(renderBurger(name, i));
   }
-  console.log(arrBurger);
+  // console.log(arrBurger);
   return arrBurger;
 };
 const renderBurger = (name, index) => {

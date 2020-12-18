@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import FoodItem from "./FoodItem";
 import { connect } from "react-redux";
+import Modal from "./Modal";
 class Menu extends Component {
   render() {
     const { menu } = this.props;
@@ -31,7 +32,14 @@ class Menu extends Component {
           </table>
         </div>
         <div className="d-flex justify-content-end p-2">
-          <button className="btn btn-primary">Thanh Toán</button>
+          <button
+            className="btn btn-primary"
+            data-bs-toggle="modal"
+            data-bs-target="#BurgerModal"
+          >
+            Thanh Toán
+          </button>
+          <Modal />
         </div>
       </div>
     );
