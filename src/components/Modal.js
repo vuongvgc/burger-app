@@ -28,7 +28,7 @@ class Modal extends Component {
             </div>
             <div className="modal-body">
               <div>
-                <Burger />
+                <Burger title="Chúc bạn ăn ngon miệng !" />
               </div>
               <div>
                 <Bill />

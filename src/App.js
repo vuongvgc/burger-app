@@ -9,7 +9,7 @@ class App extends Component {
         <h1>Bài Tập Bugger</h1>
         <div className="row">
           <div className="col-6">
-            <Burger />
+            <Burger title="Cửa Hàng Burger CyberSoft" />
           </div>
           <div className="col-6">
             <Menu />

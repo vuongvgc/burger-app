@@ -19,7 +19,7 @@ class Burger extends Component {
     });
     return (
       <div className="burger__box">
-        <h3 className="text-center">Cửa Hàng Burger CyberSoft</h3>
+        <h3 className="text-center">{this.props.title}</h3>
         <div className="breadTop"></div>
         {burgerList}
         <div className="breadBottom"></div>
