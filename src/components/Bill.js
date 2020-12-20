@@ -7,20 +7,25 @@ class Bill extends Component {
     let arrFood = Object.getOwnPropertyNames(burger);
     return (
       <div>
-        <table className="table">
+        <table className="table text-center">
           <thead>
             <tr>
               <th>Thức Ăn</th>
-              <th colSpan="2">Đơn Giá $</th>
+              <th>Đơn Giá $</th>
+              <th>Số Lượng</th>
               <th>Thành Tiền $</th>
             </tr>
           </thead>
           <tbody>
             {arrFood.map((item) => {
+              if (burger[item] === 0) {
+                return "";
+              }
               return (
                 <tr key={`Bill_${item}`}>
                   <td>{item}</td>
-                  <td colSpan="2">{menu[item]}</td>
+                  <td>{menu[item]}</td>
+                  <td>{burger[item]}</td>
                   <td>{menu[item] * burger[item]}</td>
                 </tr>
               );
