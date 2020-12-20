@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { calcTotalBurger } from "../selectors/selectBurger";
+// import { calcTotalBurger } from "../selectors/selectBurger";
 class Bill extends Component {
   render() {
     const { burger, menu, total } = this.props;
@@ -30,7 +30,8 @@ class Bill extends Component {
               <th colSpan="3" className=" text-end">
                 Tổng Tiền
               </th>
-              <th>{calcTotalBurger(burger, menu)}</th>
+              {/* <th>{calcTotalBurger(burger, menu)}</th> */}
+              <th>{total}</th>
             </tr>
           </tbody>
         </table>

@@ -1,4 +1,5 @@
 import { ADD, REMOVE, RESET } from "../constans/burger";
+import { calcTotalBurger } from "../selectors/selectBurger";
 const initialState = {
   burger: { salad: 1, cheese: 1, beef: 1 }, // [{name:'salad',amount:1},{name:'cheese',amount:1},{name:'beef',amount:1}]
 
@@ -22,6 +23,13 @@ const BurgerReducer = (state = initialState, action) => {
           ...state.burger,
           [action.payload]: state.burger[action.payload] + 1,
         },
+        total: calcTotalBurger(
+          {
+            ...state.burger,
+            [action.payload]: state.burger[action.payload] + 1,
+          },
+          state.menu
+        ),
       };
     case REMOVE:
       //   console.log(action.payload);
@@ -34,6 +42,16 @@ const BurgerReducer = (state = initialState, action) => {
               ? state.burger[action.payload] - 1
               : 0,
         },
+        total: calcTotalBurger(
+          {
+            ...state.burger,
+            [action.payload]:
+              state.burger[action.payload] > 0
+                ? state.burger[action.payload] - 1
+                : 0,
+          },
+          state.menu
+        ),
       };
     case RESET:
       return initialState;

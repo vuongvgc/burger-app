@@ -2,11 +2,11 @@ import React, { Component } from "react";
 import FoodItem from "./FoodItem";
 import { connect } from "react-redux";
 import Modal from "./Modal";
-import { calcTotalBurger } from "../selectors/selectBurger";
+// import { calcTotalBurger } from "../selectors/selectBurger";
 
 class Menu extends Component {
   render() {
-    const { menu, burger } = this.props;
+    const { menu, total } = this.props;
     let arrFood = Object.getOwnPropertyNames(menu);
     return (
       <div className="choose-food__box">
@@ -28,7 +28,7 @@ class Menu extends Component {
                 <th colSpan="3" className=" text-end">
                   Tổng Tiền
                 </th>
-                <th>{calcTotalBurger(burger, menu)}</th>
+                <th>{total}</th>
               </tr>
             </tbody>
           </table>
@@ -50,8 +50,8 @@ class Menu extends Component {
 const mapStateToProps = (state) => {
   return {
     menu: state.BurgerReducer.menu,
-    total: state.BurgerReducer.total,
     burger: state.BurgerReducer.burger,
+    total: state.BurgerReducer.total,
   };
 };
 export default connect(mapStateToProps)(Menu);
