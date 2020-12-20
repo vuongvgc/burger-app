@@ -12,3 +12,13 @@ const renderBurger = (name, index) => {
 const BurgerItem = (props) => {
   return <div className={props.name}></div>;
 };
+
+export const calcTotalBurger = (number, price) => {
+  let numberArr = Object.values(number);
+  let priceArr = Object.values(price);
+  let total = 0;
+  for (let i = 0; i < numberArr.length; i++) {
+    total += numberArr[i] * priceArr[i];
+  }
+  return total;
+};
