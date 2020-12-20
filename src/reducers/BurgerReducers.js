@@ -17,41 +17,28 @@ const BurgerReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD:
       //   console.log(action.payload);
+      let newBurgerNumber = {
+        ...state.burger,
+        [action.payload]: state.burger[action.payload] + 1,
+      };
       return {
         ...state,
-        burger: {
-          ...state.burger,
-          [action.payload]: state.burger[action.payload] + 1,
-        },
-        total: calcTotalBurger(
-          {
-            ...state.burger,
-            [action.payload]: state.burger[action.payload] + 1,
-          },
-          state.menu
-        ),
+        burger: newBurgerNumber,
+        total: calcTotalBurger(newBurgerNumber, state.menu),
       };
     case REMOVE:
       //   console.log(action.payload);
+      let newBurgerNumberRemove = {
+        ...state.burger,
+        [action.payload]:
+          state.burger[action.payload] > 0
+            ? state.burger[action.payload] - 1
+            : 0,
+      };
       return {
         ...state,
-        burger: {
-          ...state.burger,
-          [action.payload]:
-            state.burger[action.payload] > 0
-              ? state.burger[action.payload] - 1
-              : 0,
-        },
-        total: calcTotalBurger(
-          {
-            ...state.burger,
-            [action.payload]:
-              state.burger[action.payload] > 0
-                ? state.burger[action.payload] - 1
-                : 0,
-          },
-          state.menu
-        ),
+        burger: newBurgerNumberRemove,
+        total: calcTotalBurger(newBurgerNumberRemove, state.menu),
       };
     case RESET:
       return initialState;
